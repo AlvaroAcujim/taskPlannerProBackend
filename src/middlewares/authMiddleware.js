@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
-const SECRET_KEY = 'Bandolero4life';
+const config = require('./config.js');
+const SECRET_KEY = config.SECRET_KEY;
 
 const verifyToken = (rolesPermitidos = []) => (req, res, next) => {
   //la segunda parte del token es para probar el token con el header unicamente y usar thunder
