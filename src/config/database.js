@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-import config from '../../config.js';
+const config = require('../../config.js');
 const user = config.DB_USER;
 const pass = config.DB_PASS;
 const connectDB = async() => {
