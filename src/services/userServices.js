@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const {sendConfirmEmail} = require('./emailService');
 //si se despliega meter en .env
-const SECRET_KEY = 'Bandolero4life';
+import { SECRET_KEY } from '../../config';
 
     const insertUser = async (userData) => {
         try {

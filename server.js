@@ -1,14 +1,14 @@
 const app = require('./src/app');
 const connectDB = require('./src/config/database');
 
-const port = 3000;
+import { PORT } from './config';
 
 const startServer = async() => {
     try{
         await connectDB();
 
         app.listen(port, () => {
-            console.log(`Servidor corriendo en http://localhost:${port}`);
+            console.log(`Servidor corriendo en http://localhost:${PORT}`);
         });
     }catch(err){
         console.log('No se ha podido levantar el servidor', err);
