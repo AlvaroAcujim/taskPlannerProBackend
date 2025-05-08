@@ -16,7 +16,12 @@ app.use(express.json());
 
 app.use(cookieParser());
 
-app.use(cors());
+app.use(cors(
+  {
+    origin: 'http://127.0.0.1:5500', 
+    credentials: true               
+  }
+));
 // Protección en cabeceras
 app.use(
     helmet({
