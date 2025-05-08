@@ -1,7 +1,7 @@
 const app = require('./src/app');
 const connectDB = require('./src/config/database');
 
-import { PORT } from './config';
+import { PORT } from './config.js';
 
 const startServer = async() => {
     try{

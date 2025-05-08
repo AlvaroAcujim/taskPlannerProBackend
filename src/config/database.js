@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-import { DB_USER, DB_PASS } from '../../config';
+import { DB_USER, DB_PASS } from '../../config.js';
 
 const connectDB = async() => {
     try{
