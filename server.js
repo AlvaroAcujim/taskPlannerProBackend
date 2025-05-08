@@ -1,7 +1,6 @@
 const app = require('./src/app');
 const connectDB = require('./src/config/database');
-
-import config from './config.js';
+const config = require('./config.js');
 const port = config.PORT;
 const startServer = async() => {
     try{
