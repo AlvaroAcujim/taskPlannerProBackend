@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
-import { DB_USER, DB_PASS } from '../../config.js';
-
+import config from '../../config.js';
+const user = config.DB_USER;
+const pass = config.DB_PASS;
 const connectDB = async() => {
     try{
-        await mongoose.connect(`mongodb+srv://${DB_USER}:${DB_PASS}@cluster0.uxlva.mongodb.net/taskPlannerDB?retryWrites=true&w=majority&appName=Cluster0`)
+        await mongoose.connect(`mongodb+srv://${user}:${pass}@cluster0.uxlva.mongodb.net/taskPlannerDB?retryWrites=true&w=majority&appName=Cluster0`)
         console.log('Conexión a la base de datos establecida correctamente');
     } catch(err){
         console.log('Error al conectar a la BBDD: ', err);
