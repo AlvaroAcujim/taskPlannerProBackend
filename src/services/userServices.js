@@ -67,7 +67,7 @@ const SECRET_KEY = config.SECRET_KEY;
     const loginUser = async (identifier, password) => {
         try {
             const input = identifier.includes('@') ? {email: identifier} : {username: identifier};
-            const user = await User.findOne(input);
+            const user = await User.findOne(input).select('username image events tasks');
             if (!user) {
                 throw new Error('Usuario no encontrado');
             } 
@@ -83,7 +83,7 @@ const SECRET_KEY = config.SECRET_KEY;
                 {expiresIn: '1d'}
             );
     
-            return token
+            return {token, user}
         } catch (err) {
             console.log('Error al crear usuario: ' , err);
             throw err;

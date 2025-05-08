@@ -6,6 +6,7 @@ router.post('/login', userController.loginUser);
 router.post('/logout', userController.logoutUser);
 
 router.post('/', userController.createUser);
+router.get('/admins', userController.getAllAdminUsers);
 router.get('/', userController.getAllAdminUsers);
 router.get('/:id', userController.getUserById);
 
