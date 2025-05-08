@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const config = require('./config.js');
+const config = require('../../config');
 const SECRET_KEY = config.SECRET_KEY;
 
 const verifyToken = (rolesPermitidos = []) => (req, res, next) => {
