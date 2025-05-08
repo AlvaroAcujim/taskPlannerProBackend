@@ -82,8 +82,11 @@ const SECRET_KEY = config.SECRET_KEY;
                     SECRET_KEY,
                 {expiresIn: '1d'}
             );
-    
-            return token, user
+            const tokenAndUser = {
+                user,
+                token
+            }
+            return tokenAndUser
         } catch (err) {
             console.log('Error al crear usuario: ' , err);
             throw err;
