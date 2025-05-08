@@ -13,6 +13,8 @@ const verifyToken = (rolesPermitidos = []) => (req, res, next) => {
 
     if (rolesPermitidos.length > 0 && (!req.user || !rolesPermitidos.includes(req.user.role))) {
       return res.status(403).json({ message: 'No tienes permiso para esta accion' });
+    }else{
+      return res.status(200).json({ message: 'Token valido', decoded });
     }
 
     next();
