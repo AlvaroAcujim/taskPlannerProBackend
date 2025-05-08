@@ -15,7 +15,7 @@ const verifyToken = (rolesPermitidos = []) => (req, res, next) => {
       return res.status(403).json({ message: 'No tienes permiso para esta accion' });
     }
 
-    next(decoded);
+    next();
   } catch (error) {
     return res.status(401).json({ message: 'Token invalido' });
   }
