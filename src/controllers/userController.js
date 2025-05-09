@@ -52,7 +52,8 @@ const userController = {
                 httpOnly: false,
                 sameSite: 'Lax', 
                 maxAge: 1000 * 60 * 60 // 1 hora
-                }).status(200).json({ message: 'te has logeado' });
+                })
+                res.status(200).json({ message: 'te has logeado' });
             }catch(err){
                 res.status(401).json({error: 'Error al logearte'})
             }
