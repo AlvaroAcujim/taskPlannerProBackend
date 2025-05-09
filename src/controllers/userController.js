@@ -48,12 +48,7 @@ const userController = {
             try{
                 const {identifier, password} = req.body;
                 const result = await loginUser(identifier, password);
-                res.cookie('token', result, {
-                httpOnly: false,
-                sameSite: 'Lax', 
-                maxAge: 1000 * 60 * 60 // 1 hora
-                })
-                res.status(200).json({ message: 'te has logeado' });
+                res.status(200).json(result);
             }catch(err){
                 res.status(401).json({error: 'Error al logearte'})
             }
