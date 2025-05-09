@@ -49,8 +49,8 @@ const userController = {
                 const {identifier, password} = req.body;
                 const result = await loginUser(identifier, password);
                 res.cookie('token', result, {
-                httpOnly: true, // ✅ Protege contra XSS
-                sameSite: 'Lax', // ✅ Protección básica contra CSRF
+                httpOnly: false,
+                sameSite: 'Lax', 
                 maxAge: 1000 * 60 * 60 // 1 hora
                 }).status(200).json({ message: 'te has logeado' });
             }catch(err){
