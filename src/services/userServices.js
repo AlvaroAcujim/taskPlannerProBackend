@@ -67,7 +67,7 @@ const SECRET_KEY = config.SECRET_KEY;
     const loginUser = async (identifier, password) => {
         try {
             const input = identifier.includes('@') ? {email: identifier} : {username: identifier};
-            const user = await User.findOne(input).select('username image events tasks');
+            const user = await User.findOne(input);
             if (!user) {
                 throw new Error('Usuario no encontrado');
             } 
