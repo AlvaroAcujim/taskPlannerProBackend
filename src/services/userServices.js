@@ -63,6 +63,19 @@ const SECRET_KEY = config.SECRET_KEY;
         throw err;
     }
   }
+  const getUserByUsernameOrEmail = async(identifier) => {
+    try{
+        const input = identifier.includes('@') ? {email: identifier} : {username: identifier};
+        const user = await User.findOne(input).select('username image events tasks role');
+        if(!user){
+            throw new Error('Error al recoger el usuario por username o email');
+        }
+        return user;
+    }catch(err){
+        console.log('Error al obtener usuario: ' , err);
+        throw err;
+    }
+  }
   
     const loginUser = async (identifier, password) => {
         try {
@@ -84,8 +97,8 @@ const SECRET_KEY = config.SECRET_KEY;
             );
             return token
         } catch (err) {
-            console.log('Error al crear usuario: ' , err);
+            console.log('Error al crear el token: ' , err);
             throw err;
         }
   };
-  module.exports = {insertUser, getUserByid, loginUser, getAllAdminUsers};
+  module.exports = {insertUser, getUserByid, loginUser, getAllAdminUsers, getUserByUsernameOrEmail};

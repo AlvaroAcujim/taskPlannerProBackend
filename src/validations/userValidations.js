@@ -46,6 +46,15 @@ const getUserByIdValidation = [
 
     validateResult
 ];
+const getUserByIdentifierValidation = [
+    param('identifier')
+    .notEmpty()
+    .withMessage('Debes ingresar un email o username')
+    .isString()
+    .withMessage('El email o el username debe de ser texto'),
+
+    validateResult
+];
 const loginValidation = [
     body('identifier')
         .notEmpty()
@@ -59,4 +68,5 @@ const loginValidation = [
         .withMessage('La contraseña debe tener al menos 8 caracteres'),
     validateResult
 ];
-module.exports = {createUserValidations, getUserByIdValidation, loginValidation}
+
+module.exports = {createUserValidations, getUserByIdValidation, loginValidation, getUserByIdentifierValidation}

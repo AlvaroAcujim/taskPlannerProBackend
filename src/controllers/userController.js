@@ -1,5 +1,5 @@
-const {insertUser, loginUser, getUserByid, getAllAdminUsers} = require('../services/userServices');
-const {createUserValidations, getUserByIdValidation, loginValidation} = require('../validations/userValidations')
+const {insertUser, loginUser, getUserByid, getAllAdminUsers, getUserByUsernameOrEmail} = require('../services/userServices');
+const {createUserValidations, getUserByIdValidation, loginValidation, getUserByIdentifierValidation} = require('../validations/userValidations')
 const userController = {
     createUser: [
         ...createUserValidations,
@@ -30,6 +30,18 @@ const userController = {
             }
         },
     ],
+    getUserByUsernameOrEmail:[
+        ...getUserByIdentifierValidation,
+        async(req, res) => {
+            try{
+                const {identifier} = req.params;
+                const result = await getUserByUsernameOrEmail(identifier);
+                res.status(200).json(result);
+            }catch(err){
+                res.status(401).json({error: 'Error al encontrar usuario por identifier'})
+            }
+        },
+    ],
     loginUser:[
         ...loginValidation,
         async(req, res) => {
@@ -42,6 +54,7 @@ const userController = {
             }
         },
     ],
+    
     logoutUser: [
         async (req, res) => {
         try {
