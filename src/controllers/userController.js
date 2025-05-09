@@ -48,7 +48,11 @@ const userController = {
             try{
                 const {identifier, password} = req.body;
                 const result = await loginUser(identifier, password);
-                res.status(200).json(result);
+                res.cookie('token', token, {
+                httpOnly: true, // ✅ Protege contra XSS
+                sameSite: 'Lax', // ✅ Protección básica contra CSRF
+                maxAge: 1000 * 60 * 60 // 1 hora
+                }).status(200).json({ message: 'te has logeado' });
             }catch(err){
                 res.status(401).json({error: 'Error al logearte'})
             }
