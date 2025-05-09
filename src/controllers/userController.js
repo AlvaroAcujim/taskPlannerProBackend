@@ -48,7 +48,7 @@ const userController = {
             try{
                 const {identifier, password} = req.body;
                 const result = await loginUser(identifier, password);
-                res.cookie('token', token, {
+                res.cookie('token', result, {
                 httpOnly: true, // ✅ Protege contra XSS
                 sameSite: 'Lax', // ✅ Protección básica contra CSRF
                 maxAge: 1000 * 60 * 60 // 1 hora
