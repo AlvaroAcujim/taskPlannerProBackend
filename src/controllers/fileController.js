@@ -10,7 +10,8 @@ const fileController = {
                 if (!file) return res.status(400).json({ error: 'Archivo no proporcionado' });
             
                 const updatedDoc = await uploadFile(model, id, file);
-            
+                res.setHeader('Access-Control-Allow-Origin', '*'); // o el dominio específico de tu frontend
+                res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
                 res.status(200).json({message: 'Imagen subida y actualizada correctamente', data: updatedDoc});
             }catch(err){
                 console.log('Error al subir la imagen', err);
