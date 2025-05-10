@@ -25,13 +25,13 @@ const uploadFile = async (modelName, id, file) => {
   let imagePathFolder;
   if (!Model) throw new Error("Modelo no válido");
 
-  const doc = await Model.findById(id);
+  const doc = await Model.findById(id).select('username image');
   if (!doc) throw new Error("Documento no encontrado");
 
   if (modelName === "user") {
-    imagePathFolder = eventDir;
-  } else if (modelName === "event") {
     imagePathFolder = userDir;
+  } else if (modelName === "event") {
+    imagePathFolder = eventDir;
   } else {
     throw new Error("Modelo no válido");
   }
