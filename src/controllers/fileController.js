@@ -27,7 +27,7 @@ const fileController = {
           
               // Enviar archivo al navegador (inline)
               res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
-              res.setHeader('Access-Control-Allow-Origin', '*');
+              res.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:5500/frontend/');
               res.sendFile(filePath);
             } catch (err) {
               console.error('Error al servir imagen:', err);

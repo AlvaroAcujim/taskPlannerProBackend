@@ -11,7 +11,6 @@ const taskRoutes = require('./routes/taskRoutes');
 const eventRoutes = require('./routes/eventRoutes');
 const fileRoutes = require('./routes/fileRoutes');
 const app = express();
-const path = require('path');
 
 app.use(express.json());
 
@@ -44,7 +43,6 @@ app.use('/api/users', userRoutes);
 app.use('/api/task', taskRoutes)
 app.use('/api/event', eventRoutes);
 app.use('/api/file', fileRoutes);
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.use(notFoundHandler);
 app.use(errorHandler);
