@@ -1,3 +1,4 @@
+require('./websocket.js');
 const app = require('./src/app.js');
 const connectDB = require('./src/config/database.js');
 const config = require('./config.js');
