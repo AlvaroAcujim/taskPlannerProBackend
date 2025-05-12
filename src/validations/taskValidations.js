@@ -30,14 +30,16 @@ const createTaskValidation = [
         .isISO8601()
         .toDate() 
         .withMessage('La fecha debe estar en formato válido (ISO 8601)'),
+
         validateResult
 ];
 const removeTaskValidation = [
     param('taskId')
         .isMongoId()
         .withMessage('El id del task no es valido'),
+        
         validateResult
-]
+];
 const updateTaskValidation = [
     param('taskId')
         .isMongoId()
@@ -62,8 +64,9 @@ const updateTaskValidation = [
         .withMessage('La fecha es requerida')
         .isISO8601()
         .toDate() 
-        .withMessage('La fecha debe estar en formato válido (ISO 8601)'),,
+        .withMessage('La fecha debe estar en formato válido (ISO 8601)'),
+
         validateResult
-]
+];
 
 module.exports = {createTaskValidation, removeTaskValidation,updateTaskValidation}

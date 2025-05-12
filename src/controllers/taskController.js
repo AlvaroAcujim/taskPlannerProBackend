@@ -29,7 +29,7 @@ const taskController = {
             }
         }
     ],
-    updateTask:[
+    updateTasks:[
         ...updateTaskValidation,
         async(req,res) => {
             try{
@@ -44,7 +44,7 @@ const taskController = {
             }
         }
     ],
-    getTasks: [
+    getTask: [
         async(req, res) => {
             try{
                 const userId = req.user.id;
