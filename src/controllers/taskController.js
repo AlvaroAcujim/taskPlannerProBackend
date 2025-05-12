@@ -48,7 +48,7 @@ const taskController = {
         async(req, res) => {
             try{
                 const userId = req.user.id;
-                const tasks = getTasks(userId);
+                const tasks = await getTasks(userId);
                 res.status(200).json(tasks);
             }catch(err){
                 console.log('Error al obtener las tasks', err);
