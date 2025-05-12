@@ -26,7 +26,7 @@ const createTask = async (data, userId) => {
   return newTask;
 };
 const deleteTask = async (taskId, userId) => {
-  const task = await Task.findByIdAndDelete({ _id: taskId, user: userId });
+  const task = await Task.findByIdAndDelete({ _id: taskId });
   if (!task) throw new Error("Tarea no encontrada");
   await User.findByIdAndUpdate(userId, {
     $pull: { tasks: taskId },

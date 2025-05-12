@@ -21,7 +21,7 @@ const taskController = {
             try{
                 const userId = req.user.id;
                 const {taskId} = req.params;
-                await deleteTask(userId, taskId);
+                await deleteTask(taskId, userId);
                 res.status(200).json({message: 'Tarea eliminada'});
             }catch(err){
                 console.log('Error al eliminar la task: ', err);
