@@ -49,12 +49,19 @@ const uploadFile = async (modelName, id, file) => {
   const ext = path.extname(file.originalname);
   const uniqueName = doc._id + ext;
   const newImagePath = path.join(imagePathFolder, uniqueName);
-
+    await User.findByIdAndUpdate(
+  id,                            // ID del usuario a actualizar
+  { $set: { image: uniqueName } },  // Campos a actualizar
+  { new: true }                      // Para devolver el documento actualizado
+);
   await fs.writeFile(newImagePath, file.buffer);
 
+ /*  doc.image = uniqueName;
+  await doc.save(); */
+
+
   // Actualiza documento
-  doc.image = uniqueName;
-  await doc.save();
+  
 
   return doc;
 };
