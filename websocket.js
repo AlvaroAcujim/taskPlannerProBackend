@@ -1,7 +1,9 @@
 const WebSocket = require('ws');
-
+const http = require('http');
+const app = express();
 // Crear servidor WebSocket en el puerto 3001
-const wss = new WebSocket.Server({ port: 3001 });
+const server = http.createServer(app);
+const wss = new WebSocket.Server({ server });
 
 // Almacenar clientes con su conexión y mensajes
 const clients = new Map();
