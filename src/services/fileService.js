@@ -3,7 +3,6 @@ const path = require("path");
 const Event = require("../models/Event");
 const User = require("../models/User");
 const models = { user: User, event: Event };
-const { v4: uuidv4 } = require("uuid");
 
 const uploadDir = path.join(__dirname, "../uploads");
 const eventDir = path.join(uploadDir, "events");
@@ -25,7 +24,7 @@ const uploadFile = async (modelName, id, file) => {
   let imagePathFolder;
   if (!Model) throw new Error("Modelo no válido");
 
-  const doc = await Model.findById(id).select('username image');
+  const doc = await Model.findById(id).select('id username image');
   if (!doc) throw new Error("Documento no encontrado");
 
   if (modelName === "user") {
@@ -48,7 +47,7 @@ const uploadFile = async (modelName, id, file) => {
 
   // Guarda nueva imagen
   const ext = path.extname(file.originalname);
-  const uniqueName = uuidv4() + ext;
+  const uniqueName = doc._id + ext;
   const newImagePath = path.join(imagePathFolder, uniqueName);
 
   await fs.writeFile(newImagePath, file.buffer);
