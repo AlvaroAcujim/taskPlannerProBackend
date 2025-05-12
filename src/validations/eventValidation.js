@@ -22,8 +22,9 @@ const createEventValidation = [
        body('date')
            .notEmpty()
            .withMessage('La fecha es requerida')
-           .isDate()
-           .withMessage('La fecha debe ser una fecha'),
+           .isISO8601()
+            .toDate() 
+            .withMessage('La fecha debe estar en formato válido (ISO 8601)'),
 
            validateResult
 ];
@@ -50,8 +51,9 @@ const updateEventValidation = [
     body('date')
         .notEmpty()
         .withMessage('La fecha es requerida')
-        .isDate()
-        .withMessage('La fecha debe ser una fecha'),
+        .isISO8601()
+        .toDate() 
+        .withMessage('La fecha debe estar en formato válido (ISO 8601)'),
 ]
 
 module.exports = {createEventValidation, removeEventValidation, updateEventValidation};
